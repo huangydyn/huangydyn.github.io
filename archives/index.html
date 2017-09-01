@@ -6,12 +6,12 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>黄炎的博客空间</title>
+  <title>Archives | 黄炎的博客空间</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Yan Huang&apos;Blog Space">
 <meta property="og:type" content="website">
 <meta property="og:title" content="黄炎的博客空间">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/archives/index.html">
 <meta property="og:site_name" content="黄炎的博客空间">
 <meta property="og:description" content="Yan Huang&apos;Blog Space">
 <meta name="twitter:card" content="summary">
@@ -158,118 +158,47 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-ContinousDelivery" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
     
-      <header class="article-header">
-        
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/06/19/ContinousDelivery/" class="archive-article-date">
+  	<time datetime="2017-06-19T08:59:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
+</a>
+        </div>
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/19/ContinousDelivery/">ContinousDelivery</a>
+      <a class="archive-article-title" href="/2017/06/19/ContinousDelivery/">ContinousDelivery</a>
     </h1>
   
 
-        
-        <a href="/2017/06/19/ContinousDelivery/" class="archive-article-date">
-  	<time datetime="2017-06-19T08:59:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>DevOps是当前炒的很火热的概念，实践DevOps的方法涉及两个方面，一是如何持续管理需求、变更和及时处理用户反馈，通过工具固化一定的流程，有效的管理需求和变更。另一方面就是如何持续交付。<br>作为DevOps流程的核心实践<strong>持续交付(Continuous Delivery)</strong>在这其中能够为软件项目带来什么价值呢？本文将结合持续交付的具体实践展开分析与讨论。</p>
-<h2 id="入手持续交付"><a href="#入手持续交付" class="headerlink" title="入手持续交付"></a>入手持续交付</h2><p><strong>持续交付最基本的原则是：</strong></p>
-<blockquote>
-<p>提前并频繁地内部交付，将几乎所有事情自动化</p>
-</blockquote>
-<p>持续交付最核心的实践是自动化，通过将每一次改动都提交到一个模拟产品环境中，使用严格 的自动化测试，确保业务应用和服务能符合预期，使用完全的自动化过程来把每个变更自动的提交到测试环境。<br>实现自动化的持续交付基于部署流水线模式。</p>
-<p>部署流水线的目的是让软件交付过程中的每个人都能看到每个构建版本从提交到发布的整个过程，将开发机构的文化、流程和工具整合到一起，这也符合了DevOps的核心理念<strong>将开发机构的文化、流程和工具整合到一起</strong>。<br>下面讨论部署流水线的细节。</p>
-<h3 id="脚本化构建与部署"><a href="#脚本化构建与部署" class="headerlink" title="脚本化构建与部署"></a>脚本化构建与部署</h3><p>脚本化构建与部署应以迭代的方式来识别最困难的步骤，并将其自动化，沿着部署流水线，逐步完善自动化构建和部署能力。脚本化构建与部署应该遵循如下原则：</p>
-<ul>
-<li>为部署流水线的每个阶段创建脚本，表达构建流程。</li>
-<li>使用同样的脚本向所有环境部署，保证在所有环境上都能运行。</li>
-<li>确保部署过程是幂等的。</li>
-<li>增量式部署。</li>
-</ul>
-<h3 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h3><p>提交阶段发生在像版本控制库提交代码，是流水线的入口。提交阶段应遵循如下原则：</p>
-<ul>
-<li>Dev保证本地构建成功后提交</li>
-<li>测试不通过令提交失败，并记录错误信息，反馈Dev尽快修复，Dev对自己的问题负责</li>
-<li>提交失败后可以回滚版本</li>
-<li>降低构造测试环境的复杂性，保证测试代码整洁有效性。</li>
-</ul>
-<h3 id="自动化验收测试"><a href="#自动化验收测试" class="headerlink" title="自动化验收测试"></a>自动化验收测试</h3><p>单元测试不能保证捕获所有问题，因此需要验收测试来保证软件质量。频繁的手工测试带来高昂成本，采用自动化验收测试便于频繁发布软件。<br>自动化验收测试使得团队成员都关注于真正的工作：业务价值，为软件能否满足标准提供了更高得信心，快速向开发团队反馈问题，便于软件大规模重构。</p>
-<h3 id="非功能性需求测试"><a href="#非功能性需求测试" class="headerlink" title="非功能性需求测试"></a>非功能性需求测试</h3><p>非功能需求测试包括容量、吞吐量以及性能测试。<br>将非功能性需求加入到部署流水线上，便于软件设计执行实验场景来帮助诊断预测问题。<br>对于非功能需求，过早地关注容量优化是低效且昂贵的，有可能造成过度设计，<strong>除非性能有问题，不在代码可读性上让步</strong>。</p>
-<h3 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h3><p>频繁地将软件发布到不同的测试环境中，能够降低发布的风险，降低上线压力。<br>发布过程将组织各部门联系起来：运维团队，开发团队，测试团队，技术支持团队，交付团队，促进交流合作。</p>
-<h2 id="持续交付对于运维的改变"><a href="#持续交付对于运维的改变" class="headerlink" title="持续交付对于运维的改变"></a>持续交付对于运维的改变</h2><p>DevOps将敏捷方法引入到系统管理与运营，有两点主要原则：</p>
-<ul>
-<li>强调合作</li>
-<li>利用敏捷技术对基础设施进行有效管理</li>
-</ul>
-<p>运维负责将代码部署到生成环境中，持续交付从一开始就让运维参与进来，两者共同的利益是<br><strong>让发布有价值、稳定得软件成为一件低风险的事</strong><br>持续交付的核心实践 <strong>尽可能频繁的发布</strong> 保证了这一点，从而成为了DevOps的关键步骤。</p>
-<h3 id="自动化环境管理"><a href="#自动化环境管理" class="headerlink" title="自动化环境管理"></a>自动化环境管理</h3><p>对于运维人员的工作，关键的痛点在于部署系统到不同配置的大量基础设施上，对基础设置的管理往往利用脚本管理，修改基础设施的技术也应该是发布的一部分。<br>将基础设施的配置自动化，纳入流水线并配置测试会大大便于运维的部署管理工作。</p>
-<h3 id="另一种方案，使用docker进行持续集成"><a href="#另一种方案，使用docker进行持续集成" class="headerlink" title="另一种方案，使用docker进行持续集成"></a>另一种方案，使用docker进行持续集成</h3><p>在业务不断增长过程中，企业的组件也随之不断扩张，随之带来了对基础设施的复杂配置管理工作。采用自动化部署配置管理无疑产生巨大成本，使用Docker——以“容器化”的方式去部署应用。 Docker像集装箱一样，打包了所有依赖，再在其他服务器上部署很容易，不至于换服务器后发现各种配置文件散落一地，这样就解决了编译时依赖和运行时依赖的问题。<br>利用Docker进行持续集成的流程如下：</p>
-<ul>
-<li>开发者提交代码；</li>
-<li>触发镜像构建；</li>
-<li>构建镜像上传至私有仓库；</li>
-<li>镜像下载至执行机器；</li>
-<li>镜像运行。</li>
-</ul>
-<h2 id="价值"><a href="#价值" class="headerlink" title="价值"></a>价值</h2><p>贯穿持续交付始终的是自动化手段，这也恰恰是软件行业所追求的，自动化的交付过程带来了诸多益处：</p>
-<ul>
-<li>快速发现错误。每完成一点更新，就集成到主干，可以快速发现错误，定位错误也比较容易。</li>
-<li>快速发布。能够应对业务需求，并更快地实现软件价值。</li>
-<li>编码-&gt;测试-&gt;上线-&gt;交付的频繁迭代周期缩短，同时获得迅速反馈；</li>
-<li>高质量的软件发布标准。整个交付过程标准化、可重复、可靠，</li>
-<li>整个交付过程进度可视化，方便团队人员了解项目成熟度；</li>
-<li>更先进的团队协作方式。从需求分析、产品的用户体验到交互 设计、开发、测试、运维等角色密切协作，相比于传统的瀑布式软件团队，更少浪费。</li>
-<li>更平滑的开发过程，减少上线风险，增强团队信心。</li>
-</ul>
+        <div class="article-info info-on-right">
+          
+          
 
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/19/ContinousDelivery/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
+    </div></section>
+  
+
+    
 
 
           </div>
@@ -291,9 +220,9 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
+		isHome: false,
 		isPost: false,
-		isArchive: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
