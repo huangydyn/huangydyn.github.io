@@ -6,17 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | 黄炎的博客空间</title>
+  <title>详解Spring@AutoWired多种方式的依赖注入 | 黄炎的博客空间</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一只热爱技术的程序猿">
-<meta property="og:type" content="website">
-<meta property="og:title" content="黄炎的博客空间">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="在Spring框架进行bean对象依赖注入时，@Autowired利用可以对成员变量、方法和构造函数进行标注，来完成自动装配的工作。@Autowired可标注在成员变量，也可以标注在成员变量的set方法上，以及类得构造函数上。  Spring会直接将UserDao类型的唯一一个bean赋值给userDao这个成员变量： 12@AutowiredUserDao userDao;  Spring会调用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="详解Spring@AutoWired多种方式的依赖注入">
+<meta property="og:url" content="http://yoursite.com/2017/09/01/详解Spring-AutoWired多种方式的依赖注入/index.html">
 <meta property="og:site_name" content="黄炎的博客空间">
-<meta property="og:description" content="一只热爱技术的程序猿">
+<meta property="og:description" content="在Spring框架进行bean对象依赖注入时，@Autowired利用可以对成员变量、方法和构造函数进行标注，来完成自动装配的工作。@Autowired可标注在成员变量，也可以标注在成员变量的set方法上，以及类得构造函数上。  Spring会直接将UserDao类型的唯一一个bean赋值给userDao这个成员变量： 12@AutowiredUserDao userDao;  Spring会调用">
+<meta property="og:updated_time" content="2017-09-01T08:57:27.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="黄炎的博客空间">
-<meta name="twitter:description" content="一只热爱技术的程序猿">
+<meta name="twitter:title" content="详解Spring@AutoWired多种方式的依赖注入">
+<meta name="twitter:description" content="在Spring框架进行bean对象依赖注入时，@Autowired利用可以对成员变量、方法和构造函数进行标注，来完成自动装配的工作。@Autowired可标注在成员变量，也可以标注在成员变量的set方法上，以及类得构造函数上。  Spring会直接将UserDao类型的唯一一个bean赋值给userDao这个成员变量： 12@AutowiredUserDao userDao;  Spring会调用">
   
     <link rel="alternative" href="/atom.xml" title="黄炎的博客空间" type="application/atom+xml">
   
@@ -138,103 +139,183 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-详解Spring-AutoWired多种方式的依赖注入" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      详解Spring@AutoWired多种方式的依赖注入
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/01/详解Spring-AutoWired多种方式的依赖注入/" class="archive-article-date">
+
+        
+        <a href="/2017/09/01/详解Spring-AutoWired多种方式的依赖注入/" class="archive-article-date">
   	<time datetime="2017-09-01T08:57:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-01</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/01/详解Spring-AutoWired多种方式的依赖注入/">详解Spring@AutoWired多种方式的依赖注入</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在Spring框架进行bean对象依赖注入时，@Autowired利用可以对成员变量、方法和构造函数进行标注，来完成自动装配的工作。<br>@Autowired可标注在成员变量，也可以标注在成员变量的set方法上，以及类得构造函数上。</p>
+<ul>
+<li><p>Spring会直接将UserDao类型的唯一一个bean赋值给userDao这个成员变量：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@Autowired</div><div class="line">UserDao userDao;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Spring会调用setUserDao方法来将UserDao类型的唯一一个bean装配到userDao这个属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@Autowired</div><div class="line">UserDao setUserDao(UserDao userDao)</div><div class="line">&#123;</div><div class="line">    this.userDao = userDao;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>类似于set方法，标注在构造函数上。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@Autowired</div><div class="line">Service(UserDao userDao)</div><div class="line">&#123;</div><div class="line">    this.userDao = userDao;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>对于标注在成员变量上的方式，通常的做法是标注在单个类型的变量上，Spring框架提供了强大的DI能力能够实现对Collection类型的自动注入。</p>
+<h2 id="List类型自动注入"><a href="#List类型自动注入" class="headerlink" title="List类型自动注入"></a>List类型自动注入</h2><p>当程序中定义了多个相同类型的bean时，如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">public interface Converter &#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">public class BookConverter implements Converter &#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">public class CustomerConverter implements Converter &#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">public class AuthorConverter implements Converter &#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在需要注入以上3个bean的类中声明<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;Converter&gt; converters;</div></pre></td></tr></table></figure></p>
+<p>Spring会自动从容器中取出这三个相同类型的bean装配到List类型的converters中，从而简化了依赖注入的过程。</p>
+<h2 id="Map类型自动注入"><a href="#Map类型自动注入" class="headerlink" title="Map类型自动注入"></a>Map类型自动注入</h2><p>在需要注入以上3个bean的类中声明<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Map&lt;String,Converter&gt; converters;</div></pre></td></tr></table></figure></p>
+<p>此时，Spring会自动从容器中取出这三个相同类型的bean以及bean的名称，注入到Map类型的converters中，此时该map得key对应为bean的名称，value则为对应bean对象。<br>程序中可使用如下方式获取对象bean<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">converter.get(&quot;BookConverter&quot;)</div></pre></td></tr></table></figure></p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/09/01/详解Spring-AutoWired多种方式的依赖注入/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/01/JDBCtemplate防范Sql注入攻击/" class="archive-article-date">
-  	<time datetime="2017-09-01T08:55:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-01</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2017/09/01/JDBCtemplate防范Sql注入攻击/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JDBCtemplate防范Sql注入攻击</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/01/JDBCtemplate防范Sql注入攻击/">JDBCtemplate防范Sql注入攻击</a>
-    </h1>
+  
+  
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: "http://yoursite.com/2017/09/01/详解Spring-AutoWired多种方式的依赖注入/", 
+    sourceId: "详解Spring-AutoWired多种方式的依赖注入",
+    productKey: "true",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/19/DevOps核心实践——持续交付/" class="archive-article-date">
-  	<time datetime="2017-06-19T08:59:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/19/DevOps核心实践——持续交付/">DevOps核心实践——持续交付</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -257,8 +338,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

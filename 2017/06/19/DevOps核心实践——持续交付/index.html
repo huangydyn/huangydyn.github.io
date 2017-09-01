@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>ContinousDelivery | 黄炎的博客空间</title>
+  <title>DevOps核心实践——持续交付 | 黄炎的博客空间</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="DevOps是当前炒的很火热的概念，实践DevOps的方法涉及两个方面，一是如何持续管理需求、变更和及时处理用户反馈，通过工具固化一定的流程，有效的管理需求和变更。另一方面就是如何持续交付。作为DevOps流程的核心实践持续交付(Continuous Delivery)在这其中能够为软件项目带来什么价值呢？本文将结合持续交付的具体实践展开分析与讨论。 入手持续交付持续交付最基本的原则是：  提前并">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ContinousDelivery">
-<meta property="og:url" content="http://yoursite.com/2017/06/19/ContinousDelivery/index.html">
+<meta property="og:title" content="DevOps核心实践——持续交付">
+<meta property="og:url" content="http://yoursite.com/2017/06/19/DevOps核心实践——持续交付/index.html">
 <meta property="og:site_name" content="黄炎的博客空间">
 <meta property="og:description" content="DevOps是当前炒的很火热的概念，实践DevOps的方法涉及两个方面，一是如何持续管理需求、变更和及时处理用户反馈，通过工具固化一定的流程，有效的管理需求和变更。另一方面就是如何持续交付。作为DevOps流程的核心实践持续交付(Continuous Delivery)在这其中能够为软件项目带来什么价值呢？本文将结合持续交付的具体实践展开分析与讨论。 入手持续交付持续交付最基本的原则是：  提前并">
-<meta property="og:updated_time" content="2017-06-19T09:00:40.000Z">
+<meta property="og:updated_time" content="2017-09-01T08:56:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ContinousDelivery">
+<meta name="twitter:title" content="DevOps核心实践——持续交付">
 <meta name="twitter:description" content="DevOps是当前炒的很火热的概念，实践DevOps的方法涉及两个方面，一是如何持续管理需求、变更和及时处理用户反馈，通过工具固化一定的流程，有效的管理需求和变更。另一方面就是如何持续交付。作为DevOps流程的核心实践持续交付(Continuous Delivery)在这其中能够为软件项目带来什么价值呢？本文将结合持续交付的具体实践展开分析与讨论。 入手持续交付持续交付最基本的原则是：  提前并">
   
     <link rel="alternative" href="/atom.xml" title="黄炎的博客空间" type="application/atom+xml">
@@ -42,25 +42,23 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<div class="overlay" style="background: #4d4d4d"></div>
+<div class="overlay" style="background: #00E3E3"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="null" class="js-avatar">
+			<img src="/images/avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">黄炎</a></h1>
 		</hgroup>
 		
-		<p class="header-subtitle">黄炎的博客空间</p>
+		<p class="header-subtitle">一只热爱技术的程序猿</p>
 		
 
 		<nav class="header-menu">
 			<ul>
 			
 				<li><a href="/">主页</a></li>
-	        
-				<li><a href="/tags/随笔/">随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -71,10 +69,6 @@
     			
             
     			
-    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
-    			
-            
-    			
     			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
     			
             
@@ -82,13 +76,9 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+					<a class="github" target="_blank" href="https://github.com/huangydyn" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+					<a class="rss" target="_blank" href="http://www.jianshu.com/u/4ce7460cc2f4" title="rss"><i class="icon-rss"></i></a>
 		        
 			</div>
 		</nav>
@@ -99,24 +89,22 @@
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
+  	<div class="overlay js-overlay" style="background: #00E3E3"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="null" class="js-avatar">
+				<img src="/images/avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">黄炎</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>黄炎的博客空间<i class="icon icon-quo-right"></i></p>
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>一只热爱技术的程序猿<i class="icon icon-quo-right"></i></p>
 			
 			
-			
-				
 			
 				
 			
@@ -125,13 +113,9 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+						<a class="github" target="_blank" href="https://github.com/huangydyn" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+						<a class="rss" target="_blank" href="http://www.jianshu.com/u/4ce7460cc2f4" title="rss"><i class="icon-rss"></i></a>
 			        
 				</div>
 			</nav>
@@ -140,9 +124,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -157,19 +139,19 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-ContinousDelivery" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-DevOps核心实践——持续交付" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      ContinousDelivery
+      DevOps核心实践——持续交付
     </h1>
   
 
         
-        <a href="/2017/06/19/ContinousDelivery/" class="archive-article-date">
+        <a href="/2017/06/19/DevOps核心实践——持续交付/" class="archive-article-date">
   	<time datetime="2017-06-19T08:59:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-19</time>
 </a>
         
@@ -305,7 +287,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/06/19/ContinousDelivery/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/06/19/DevOps核心实践——持续交付/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -317,6 +299,20 @@
 </article>
 
   
+<nav id="article-nav">
+  
+    <a href="/2017/09/01/JDBCtemplate防范Sql注入攻击/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          JDBCtemplate防范Sql注入攻击
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -338,6 +334,17 @@
 
   
   
+  
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: "http://yoursite.com/2017/06/19/DevOps核心实践——持续交付/", 
+    sourceId: "DevOps核心实践——持续交付",
+    productKey: "true",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
   
 
   
@@ -396,25 +403,17 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
       
     
-      
-      
-      
-    
     
 
     <ul style="width: 70%">
     
     
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
-      
-        
-      
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -477,38 +476,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     	</section>
     
 
-    
-    	<section class="tools-section tools-section-friends" q-show="friends">
-  		
-        <ul class="search-ul">
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接3</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接4</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接5</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接6</a>
-            </li>
-          
-        </ul>
-  		
-    	</section>
     
 
     
